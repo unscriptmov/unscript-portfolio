@@ -30,7 +30,7 @@ export default function Home() {
 
       <img
         src="/images/logo.png"
-        alt="logo" 
+        alt="logo"
         className="h-20 w-auto"
       />
 
