@@ -30,7 +30,7 @@ export default function Home() {
 
       <img
         src="/images/logo.png" 
-        alt="UNSCRIPT.mov - 2D Animator"
+        alt="/images/logo.png" 
         className="h-16 w-auto"
       />
 
