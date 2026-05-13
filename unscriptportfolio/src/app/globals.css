@@ -35,3 +35,7 @@ body {
   font-family: "GeneralSans", sans-serif;
   overflow-x: hidden;
 }
+
+html {
+  scroll-behavior: smooth;
+}

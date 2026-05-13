@@ -20,68 +20,92 @@ const projects = [
 export default function Home() {
   return (
     <main className="bg-black text-white">
-{/* NAVBAR */}
-<nav className="fixed top-0 left-0 w-full z-50 px-6 py-6">
 
-  <div className="max-w-7xl mx-auto flex items-center justify-between">
+      {/* NAVBAR */}
+      <nav className="fixed top-0 left-0 w-full z-50 px-6 py-6 backdrop-blur-md bg-black/10 border-b border-neutral-900">
 
-    <h1 className="text-sm tracking-[0.3em] uppercase">
-      UNSCRIPT
-    </h1>
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
 
-    <div className="flex gap-8 text-sm text-neutral-400">
-
-      <a
-        href="#"
-        className="hover:text-white transition-colors duration-300"
-      >
-        About
-      </a>
-
-      <a
-        href="#"
-        className="hover:text-white transition-colors duration-300"
-      >
-        Work
-      </a>
-
-      <a
-        href="#"
-        className="hover:text-white transition-colors duration-300"
-      >
-        Contact
-      </a>
-
-    </div>
-
-  </div>
-
-</nav>
-      {/* HERO */}
-      <section className="h-screen flex items-center justify-center px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-center"
-        >
-          <p className="text-sm tracking-[0.3em] uppercase mb-4 text-neutral-400">
-            Portfolio 2026
-          </p>
-
-          <h1 className="text-7xl md:text-9xl font-bold leading-none">
-            UNSCRIPT
+          <h1 className="text-sm tracking-[0.3em] uppercase">
+            UNSCRIPT.mov
           </h1>
 
-          <p className="mt-6 text-neutral-400 max-w-md mx-auto">
-            Creative developer & visual designer crafting cinematic digital
-            experiences.
-          </p>
-        </motion.div>
-      </section>
+          <div className="flex gap-8 text-sm text-neutral-400">
+
+            <a
+              href="#about"
+              className="hover:text-white transition-colors duration-300"
+            >
+              About
+            </a>
+
+            <a
+              href="#work"
+              className="hover:text-white transition-colors duration-300"
+            >
+              Work
+            </a>
+
+            <a
+              href="#contact"
+              className="hover:text-white transition-colors duration-300"
+            >
+              Contact
+            </a>
+
+          </div>
+
+        </div>
+
+      </nav>
+
+  {/* HERO */}
+<section className="relative h-screen flex items-center justify-center px-6 overflow-hidden">
+
+  {/* VIDEO BACKGROUND */}
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    className="absolute inset-0 w-full h-full object-cover opacity-50"
+  >
+    <source src="/videos/bg-loop.mp4" type="video/mp4" />
+  </video>
+
+  {/* DARK OVERLAY */}
+  <div className="absolute inset-0 bg-black/0" />
+
+  {/* CONTENT */}
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+    className="relative z-10 text-center"
+  >
+
+    <p className="text-sm tracking-[0.3em] uppercase mb-4 text-neutral-200">
+      Portfolio 2026
+    </p>
+
+    <h1 className="text-7xl md:text-9xl font-bold leading-none">
+      Nicolás Avilés A.
+    </h1>
+
+    <p className="mt-6 text-neutral-200 max-w-md mx-auto">
+      2D Character Animator
+    </p>
+
+  </motion.div>
+
+</section>
 
       {/* ABOUT */}
-      <section className="min-h-screen px-6 py-32 border-t border-neutral-900">
+      <section
+        id="about"
+        className="px-6 py-20 border-t border-neutral-900"
+      >
+
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -89,128 +113,124 @@ export default function Home() {
           viewport={{ once: true }}
           className="max-w-5xl mx-auto"
         >
+
           <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-10">
             About
           </p>
 
-          <h2 className="text-4xl md:text-7xl leading-tight font-semibold max-w-4xl">
-            Designing immersive digital experiences through motion,
-            typography, and interaction.
+          <h2 className="text-2xl md:text-2xl leading-tight font-semibold max-w-2xl">
+            I am a 2D Animator with over 6 years of experience in national and international projects.
           </h2>
 
-          <p className="mt-12 text-neutral-400 text-lg max-w-2xl leading-relaxed">
-            Focused on creating modern interfaces inspired by cinematic
-            storytelling, motion design, and experimental web experiences.
+          <p className="mt-12 text-neutral-400 text-lg max-w-3xl leading-relaxed">
+            I specialize in traditional animation (from rough to color) and cut-out techniques.
+            I’ve had the opportunity to be part of the animation teams for series such as
+            Rick and Morty (Season 8) and Doggy World (Season 2), among other projects.
+
+            <br />
+            <br />
+
+            I consider myself a detail-oriented person who truly enjoys teamwork.
+            My focus is always on bringing creativity to the process and helping
+            the production workflow run as smoothly as possible.
           </p>
+
         </motion.div>
+
       </section>
 
-      {/* PROJECTS */}
-      <section className="px-6 py-32 border-t border-neutral-900">
+  {/* WORK */}
+<section
+  id="work"
+  className="px-6 py-32 border-t border-neutral-900"
+>
+
+  <div className="max-w-7xl mx-auto">
+
+    <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-16">
+      Demo Reel
+    </p>
+
+    <motion.div
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+    >
+
+      <div className="overflow-hidden rounded-3xl border border-neutral-800">
+
+        <div className="aspect-video">
+
+          <iframe
+            src="https://www.youtube.com/embed/i4QfIBwAHY0"
+            className="w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+
+        </div>
+
+      </div>
+
+    </motion.div>
+
+  </div>
+
+</section>
+
+      {/* FOOTER */}
+      <footer
+        id="contact"
+        className="border-t border-neutral-900 px-6 py-24"
+      >
+
         <div className="max-w-7xl mx-auto">
 
-          <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-16">
-            Selected Work
+          <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-8">
+            Contact
           </p>
 
-          <div className="space-y-32">
+          <h2 className="text-5xl md:text-8xl font-semibold leading-none">
+            Let’s create
+            <br />
+            something iconic.
+          </h2>
 
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 60 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
-                viewport={{ once: true }}
-                className="group"
+          <div className="mt-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+
+            <div className="text-neutral-400">
+              avilesarayan@gmail.com
+            </div>
+
+            <div className="flex gap-8 text-neutral-400">
+
+              <a
+                href="https://vimeo.com/nicolasavilesa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors duration-300"
               >
+                Vimeo
+              </a>
 
-                <div className="overflow-hidden rounded-3xl">
+              <a
+                href="https://linkedin.com/in/nicolasavilesa"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors duration-300"
+              >
+                LinkedIn
+              </a>
 
-                  <img
-                    src={`/images/project${index + 1}.jpg`}
-                    alt={project.title}
-                    className="w-full h-[70vh] object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-
-                </div>
-
-                <div className="flex items-center justify-between mt-8">
-
-                  <div>
-                    <h3 className="text-4xl md:text-6xl font-semibold">
-                      {project.title}
-                    </h3>
-
-                    <p className="mt-3 text-neutral-400">
-                      {project.category}
-                    </p>
-                  </div>
-
-                  <div className="hidden md:flex w-24 h-24 rounded-full border border-neutral-700 items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                    →
-                  </div>
-
-                </div>
-
-              </motion.div>
-            ))}
+            </div>
 
           </div>
 
         </div>
-      </section>
-{/* FOOTER */}
-<footer className="border-t border-neutral-900 px-6 py-24">
 
-  <div className="max-w-7xl mx-auto">
+      </footer>
 
-    <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-8">
-      Contact
-    </p>
-
-    <h2 className="text-5xl md:text-8xl font-semibold leading-none">
-      Let’s create
-      <br />
-      something iconic.
-    </h2>
-
-    <div className="mt-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-
-      <div className="text-neutral-400">
-        yourmail@email.com
-      </div>
-
-      <div className="flex gap-8 text-neutral-400">
-
-        <a
-          href="#"
-          className="hover:text-white transition-colors duration-300"
-        >
-          Instagram
-        </a>
-
-        <a
-          href="#"
-          className="hover:text-white transition-colors duration-300"
-        >
-          Behance
-        </a>
-
-        <a
-          href="#"
-          className="hover:text-white transition-colors duration-300"
-        >
-          LinkedIn
-        </a>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</footer>
     </main>
   );
 }
