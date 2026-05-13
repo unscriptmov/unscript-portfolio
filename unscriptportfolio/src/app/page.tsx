@@ -29,8 +29,9 @@ export default function Home() {
     <a href="#hero">
 
       <img
-        src="/images/logo.png" 
-        className="h-16 w-auto"
+        src="/images/logo.png"
+        alt="Logo" 
+        className="h-8 w-auto"
       />
 
     </a>
@@ -42,13 +43,6 @@ export default function Home() {
         className="hover:text-white transition-colors duration-300"
       >
         About
-      </a>
-
-      <a
-        href="#work"
-        className="hover:text-white transition-colors duration-300"
-      >
-        Work
       </a>
 
       <a
