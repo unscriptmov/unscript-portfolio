@@ -100,6 +100,14 @@ export default function Home() {
     <p className="mt-6 text-neutral-200 max-w-md mx-auto">
       2D Character Animator
     </p>
+     <a
+  href="https://vimeo.com/869134295"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-flex items-center gap-3 mt-10 px-8 py-4 border border-white/20 rounded-full text-sm uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500"
+>
+  View Demo Reel →
+</a>
 
   </motion.div>
 
@@ -175,45 +183,6 @@ export default function Home() {
 
 </section>
 
-  {/* WORK */}
-<section
-  id="work"
-  className="px-6 py-32 border-t border-neutral-900"
->
-
-  <div className="max-w-7xl mx-auto">
-
-    <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-16">
-      Demo Reel
-    </p>
-
-    <motion.div
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-      viewport={{ once: true }}
-    >
-
-      <div className="overflow-hidden rounded-3xl border border-neutral-800">
-
-        <div className="aspect-video">
-
-          <iframe
-            src="https://www.youtube.com/embed/i4QfIBwAHY0"
-            className="w-full h-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-
-        </div>
-
-      </div>
-
-    </motion.div>
-
-  </div>
-
-</section>
 
       {/* FOOTER */}
       <footer
