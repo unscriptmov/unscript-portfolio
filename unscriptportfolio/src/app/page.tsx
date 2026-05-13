@@ -21,43 +21,49 @@ export default function Home() {
   return (
     <main className="bg-black text-white">
 
-      {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 w-full z-50 px-6 py-6 backdrop-blur-md bg-black/10 border-b border-neutral-900">
+{/* NAVBAR */}
+<nav className="fixed top-0 left-0 w-full z-50 px-6 py-1 backdrop-blur-md bg-black/5 border-neutral-900">
 
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+  <div className="max-w-5xl mx-auto flex items-center justify-between">
 
-          <h1 className="text-sm tracking-[0.3em] uppercase">
-            UNSCRIPT.mov
-          </h1>
+    <a href="#hero">
 
-          <div className="flex gap-8 text-sm text-neutral-400">
+      <img
+        src="/images/logo.png" 
+        alt="UNSCRIPT.mov - 2D Animator"
+        className="h-16 w-auto"
+      />
 
-            <a
-              href="#about"
-              className="hover:text-white transition-colors duration-300"
-            >
-              About
-            </a>
+    </a>
 
-            <a
-              href="#work"
-              className="hover:text-white transition-colors duration-300"
-            >
-              Work
-            </a>
+    <div className="flex gap-30 text-sm text-neutral-300">
 
-            <a
-              href="#contact"
-              className="hover:text-white transition-colors duration-300"
-            >
-              Contact
-            </a>
+      <a
+        href="#about"
+        className="hover:text-white transition-colors duration-300"
+      >
+        About
+      </a>
 
-          </div>
+      <a
+        href="#work"
+        className="hover:text-white transition-colors duration-300"
+      >
+        Work
+      </a>
 
-        </div>
+      <a
+        href="#contact"
+        className="hover:text-white transition-colors duration-300"
+      >
+        Contact
+      </a>
 
-      </nav>
+    </div>
+
+  </div>
+
+</nav>
 
   {/* HERO */}
 <section className="relative h-screen flex items-center justify-center px-6 overflow-hidden">
@@ -100,44 +106,75 @@ export default function Home() {
 
 </section>
 
-      {/* ABOUT */}
-      <section
-        id="about"
-        className="px-6 py-20 border-t border-neutral-900"
-      >
+{/* ABOUT */}
+<section
+  id="about"
+  className="relative px-12 pt-12 pb-32 overflow-hidden"
+>
 
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-          className="max-w-5xl mx-auto"
-        >
+  {/* Background Image */}
+  <div
+    className="absolute inset-0 bg-cover bg-center blur-2xl scale-110 opacity-80"
+    style={{
+      backgroundImage: "url('/images/bgabout.jpg')"
+    }}
+  />
 
-          <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-10">
-            About
-          </p>
+  {/* CONTENT */}
+  <motion.div
+    initial={{ opacity: 0, y: 60 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+    viewport={{ once: true }}
+    className="relative z-10 max-w-6xl mx-auto"
+  >
 
-          <h2 className="text-2xl md:text-2xl leading-tight font-semibold max-w-2xl">
-            I am a 2D Animator with over 6 years of experience in national and international projects.
-          </h2>
+    {/* ABOUT LABEL */}
+    <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-16">
+      About
+    </p>
 
-          <p className="mt-12 text-neutral-400 text-lg max-w-3xl leading-relaxed">
-            I specialize in traditional animation (from rough to color) and cut-out techniques.
-            I’ve had the opportunity to be part of the animation teams for series such as
-            Rick and Morty (Season 8) and Doggy World (Season 2), among other projects.
+    {/* MAIN GRID */}
+    <div className="grid md:grid-cols-[320px_1fr] gap-24 items-center">
 
-            <br />
-            <br />
+      {/* LEFT IMAGE */}
+      <div className="flex justify-center md:justify-start">
 
-            I consider myself a detail-oriented person who truly enjoys teamwork.
-            My focus is always on bringing creativity to the process and helping
-            the production workflow run as smoothly as possible.
-          </p>
+        <img
+          src="/images/profile.jpg"
+          alt="Profile"
+          className="w-80 h-80 object-cover rounded-2xl grayscale hover:grayscale-50 transition duration-500"
+        />
 
-        </motion.div>
+      </div>
 
-      </section>
+      {/* RIGHT TEXT */}
+      <div className="max-w-2xl">
+
+        <h2 className="text-4xl leading-tight font-semibold mb-10">
+          2D Animator | 6+ Years Exp. | International & National Projects
+        </h2>
+
+        <p className="text-neutral-300 text-xl leading-relaxed">
+          I specialize in traditional animation (from rough to color) and cut-out techniques.
+          I’ve had the opportunity to be part of the animation teams for series such as
+          Rick and Morty (Season 8) and Doggy World (Season 2), among other projects.
+
+          <br />
+          <br />
+
+          I consider myself a detail-oriented person who truly enjoys teamwork.
+          My focus is always on bringing creativity to the process and helping
+          the production workflow run as smoothly as possible.
+        </p>
+
+      </div>
+
+    </div>
+
+  </motion.div>
+
+</section>
 
   {/* WORK */}
 <section
@@ -194,7 +231,7 @@ export default function Home() {
           <h2 className="text-5xl md:text-8xl font-semibold leading-none">
             Let’s create
             <br />
-            something iconic.
+            something together.
           </h2>
 
           <div className="mt-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
