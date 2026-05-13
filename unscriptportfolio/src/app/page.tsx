@@ -26,15 +26,11 @@ export default function Home() {
 
   <div className="max-w-5xl mx-auto flex items-center justify-between">
 
-    <a href="#hero">
-
       <img
         src="/images/logo.png"
         alt="logo"
         className="h-20 w-auto"
       />
-
-    </a>
 
     <div className="flex gap-30 text-sm text-neutral-300">
 
