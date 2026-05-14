@@ -12,7 +12,7 @@ export default function Home() {
   <div className="max-w-5xl mx-auto flex items-center justify-between">
 
     <img
-      src="/images/logo.png"
+      src="/images/logo2.png"
       alt="logo"
       className="h-20 w-auto opacity-99"
     />
