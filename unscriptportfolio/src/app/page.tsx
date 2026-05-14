@@ -7,37 +7,37 @@ export default function Home() {
     <main className="bg-black text-white">
 
       {/* NAVBAR */}
-      <nav className="fixed top-0 left-0 w-full z-50 px-6 py-1 backdrop-blur-md bg-black/5 border-neutral-900">
+<nav className="fixed top-0 left-0 w-full z-50 px-6 py-1 backdrop-blur-md bg-black/5 border-neutral-900">
 
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
+  <div className="max-w-5xl mx-auto flex items-center justify-between">
 
-          <img
-            src="/images/logo.png"
-            alt="logo"
-            className="h-20 w-auto"
-          />
+    <img
+      src="/images/logo.png"
+      alt="logo"
+      className="h-20 w-auto"
+    />
 
-          <div className="flex gap-30 text-sm text-neutral-300">
+    <div className="flex gap-16 text-sm text-neutral-300">
 
-            <a
-              href="#about"
-              className="hover:text-white transition-colors duration-300"
-            >
-              About
-            </a>
+      <a
+        href="#about"
+        className="hover:text-white transition-colors duration-300"
+      >
+        About
+      </a>
 
-            <a
-              href="#contact"
-              className="hover:text-white transition-colors duration-300"
-            >
-              Contact
-            </a>
+      <a
+        href="#contact"
+        className="hover:text-white transition-colors duration-300"
+      >
+        Contact
+      </a>
 
-          </div>
+    </div>
 
-        </div>
+  </div>
 
-      </nav>
+</nav>
 
       {/* HERO */}
       <section className="relative h-screen flex items-center justify-center px-6 overflow-hidden">
@@ -103,7 +103,7 @@ export default function Home() {
         {/* ABOUT */}
         <section
           id="about"
-          className="relative z-10 px-12 pt-12 pb-32"
+          className="relative z-10 px-12 pt-32 pb-32"
         >
 
           <motion.div
