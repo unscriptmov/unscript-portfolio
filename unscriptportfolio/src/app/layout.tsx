@@ -14,8 +14,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "UNSCRIPT Portfolio",
-  description: "Creative developer portfolio",
+  title: "UNSCRIPTEDREAM",
+  description: "2D Animator",
+
+  icons: {
+    icon: "/images/signed.ico",
+  },
 };
 
 export default function RootLayout({
