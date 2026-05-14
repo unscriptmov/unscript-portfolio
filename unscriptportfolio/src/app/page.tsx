@@ -14,7 +14,7 @@ export default function Home() {
     <img
       src="/images/logo.png"
       alt="logo"
-      className="h-20 w-auto"
+      className="h-20 w-auto opacity-99"
     />
 
     <div className="flex gap-16 text-sm text-neutral-300">
