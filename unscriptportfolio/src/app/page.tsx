@@ -88,7 +88,7 @@ export default function Home() {
     </h1>
 
     <p className="mt-6 text-neutral-200 max-w-md mx-auto">
-      2D Character Animator
+      2D Animator
     </p>
      <a
   href="https://vimeo.com/869134295"
@@ -148,21 +148,21 @@ export default function Home() {
       {/* RIGHT TEXT */}
       <div className="max-w-2xl">
 
-        <h2 className="text-4xl leading-tight font-semibold mb-10">
+        <h2 className="text-3xl leading-tight font-semibold mb-10">
           2D Animator | 6+ Years Exp. | International & National Projects
         </h2>
 
         <p className="text-neutral-300 text-xl leading-relaxed">
-          I specialize in traditional animation (from rough to color) and cut-out techniques.
-          I’ve had the opportunity to be part of the animation teams for series such as
-          Rick and Morty (Season 8) and Doggy World (Season 2), among other projects.
+         I specialize in traditional 2D animation and cut-out techniques. 
+           <br />
+         I’ve had the opportunity to be part of the animation teams for series such as Rick and Morty (Season 8) and Doggy World (Season 2), 
+         in addition to a selection of upcoming, unannounced productions.
 
           <br />
           <br />
 
-          I consider myself a detail-oriented person who truly enjoys teamwork.
-          My focus is always on bringing creativity to the process and helping
-          the production workflow run as smoothly as possible.
+          I consider myself a detail-oriented professional who values teamwork. 
+          My goal is to be a positive asset to the team.
         </p>
 
       </div>
@@ -175,56 +175,64 @@ export default function Home() {
 
 
       {/* FOOTER */}
-      <footer
-        id="contact"
-        className="border-t border-neutral-900 px-6 py-24"
-      >
+<footer
+  id="contact"
+  className="border-t border-neutral-900 px-6 py-24"
+>
+  <div className="max-w-7xl mx-auto">
 
-        <div className="max-w-7xl mx-auto">
+    <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-8">
+      Contact
+    </p>
 
-          <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-8">
-            Contact
-          </p>
+    <h2 className="text-5xl md:text-8xl font-semibold leading-none">
+      Let’s create
+      <br />
+      something together.
+    </h2>
 
-          <h2 className="text-5xl md:text-8xl font-semibold leading-none">
-            Let’s create
-            <br />
-            something together.
-          </h2>
+    <div className="mt-16 flex flex-col md:flex-row items-start md:items-end gap-10">
 
-          <div className="mt-16 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+      {/* EMAIL */}
+      <div className="min-w-[220px] text-neutral-400">
+        <a
+          href="mailto:avilesarayan@gmail.com"
+          className="hover:text-white transition-colors duration-300"
+        >
+          avilesarayan@gmail.com
+        </a>
+      </div>
 
-            <div className="text-neutral-400">
-              avilesarayan@gmail.com
-            </div>
+      {/* LINEA CENTRAL */}
+      <div className="hidden md:block flex-1 border-b border-neutral-800 mb-2"></div>
 
-            <div className="flex gap-8 text-neutral-400">
+      {/* REDES */}
+      <div className="flex gap-10 text-neutral-400">
 
-              <a
-                href="https://vimeo.com/nicolasavilesa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors duration-300"
-              >
-                Vimeo
-              </a>
+        <a
+          href="https://vimeo.com/nicolasavilesa"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-white transition-colors duration-300"
+        >
+          Vimeo
+        </a>
 
-              <a
-                href="https://linkedin.com/in/nicolasavilesa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors duration-300"
-              >
-                LinkedIn
-              </a>
+        <a
+          href="https://linkedin.com/in/nicolasavilesa"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-white transition-colors duration-300"
+        >
+          LinkedIn
+        </a>
 
-            </div>
+      </div>
 
-          </div>
+    </div>
 
-        </div>
-
-      </footer>
+  </div>
+</footer>
 
     </main>
   );
