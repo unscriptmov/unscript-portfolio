@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description: "2D Animator",
 
   icons: {
-    icon: "/images/Signed.ico",
+    icon: "/images/favicon.ico",
   },
 };
 
