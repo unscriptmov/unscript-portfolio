@@ -74,12 +74,9 @@ export default function Home() {
           </p>
 
           <a
-            href="https://vimeo.com/869134295"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/reel"
             className="inline-flex items-center gap-3 mt-10 px-8 py-4 border border-white/20 rounded-full text-sm uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500"
-          >
-            View Demo Reel →
+            > View Demo Reel →
           </a>
 
         </motion.div>
