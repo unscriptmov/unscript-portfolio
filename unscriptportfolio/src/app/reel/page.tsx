@@ -69,11 +69,11 @@ export default function ReelPage() {
             Demo Reel 2026
           </p>
 
-          <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10">
+          <div className="w-full aspect-video min-h-[220px] sm:min-h-[320px] md:min-h-0 rounded-2xl overflow-hidden border border-white/10">
 
             <iframe
               src="https://drive.google.com/file/d/1OFPnMbk6sFN9Z-uGRURiZHah7IfzRuZG/preview"
-              className="w-full h-full"
+              className="w-full h-full min-h-[220px] sm:min-h-[320px] md:min-h-0"
               allow="autoplay"
             ></iframe>
 
