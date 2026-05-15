@@ -7,7 +7,7 @@ export default function ReelPage() {
   const [password, setPassword] = useState("");
   const [authorized, setAuthorized] = useState(false);
 
-  const correctPassword = "REEL2026";
+  const correctPassword = "2026";
 
   const handleLogin = () => {
     if (password === correctPassword) {
