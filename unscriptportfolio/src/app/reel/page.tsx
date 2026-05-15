@@ -19,28 +19,28 @@ export default function ReelPage() {
 
   return (
 
-    <main className="relative min-h-screen text-white flex items-center justify-center px-6 overflow-hidden">
+    <main className="relative min-h-screen text-white flex items-center justify-center px-4 md:px-6 overflow-hidden">
 
       {/* BACKGROUND GIF */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-20 blur-sm scale-110"
+        className="absolute inset-0 bg-cover bg-center opacity-40 blur-sm scale-110"
         style={{
           backgroundImage: "url('/images/bgaboutcontact.gif')",
         }}
       />
 
       {/* DARK OVERLAY */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/90" />
 
       {!authorized ? (
 
         <div className="relative z-10 w-full max-w-md text-center">
 
-          <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-6">
+          <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-neutral-500 mb-6">
             Private Demo Reel
           </p>
 
-          <h1 className="text-4xl md:text-5xl font-semibold mb-10">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-10">
             Enter Password
           </h1>
 
@@ -54,7 +54,7 @@ export default function ReelPage() {
 
           <button
             onClick={handleLogin}
-            className="mt-6 px-8 py-4 border border-white/20 rounded-full uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500"
+            className="mt-6 px-6 md:px-8 py-3 md:py-4 border border-white/20 rounded-full uppercase tracking-[0.2em] text-sm hover:bg-white hover:text-black transition-all duration-500"
           >
             Enter
           </button>
@@ -65,11 +65,11 @@ export default function ReelPage() {
 
         <div className="relative z-10 w-full max-w-6xl">
 
-          <p className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-6">
+          <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-neutral-500 mb-6">
             Demo Reel 2026
           </p>
 
-          <div className="aspect-video rounded-2xl overflow-hidden border border-white/10">
+          <div className="w-full aspect-video rounded-2xl overflow-hidden border border-white/10">
 
             <iframe
               src="https://drive.google.com/file/d/1OFPnMbk6sFN9Z-uGRURiZHah7IfzRuZG/preview"
