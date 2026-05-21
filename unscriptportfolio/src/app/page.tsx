@@ -61,10 +61,6 @@ export default function Home() {
           className="relative z-10 text-center px-4"
         >
 
-          <p className="text-xs sm:text-sm tracking-[0.3em] uppercase mb-4 text-neutral-200">
-            Portfolio 2026
-          </p>
-
           <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-none">
             Nicolás Avilés A.
           </h1>
