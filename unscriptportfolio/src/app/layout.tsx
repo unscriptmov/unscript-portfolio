@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Unscriptedream - 2D Animator",
+  title: "┃Unscriptedream┃",
   description: "2D Animator",
 
   icons: {

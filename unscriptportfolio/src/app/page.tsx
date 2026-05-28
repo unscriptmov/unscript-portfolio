@@ -1,8 +1,8 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "framer-motion";
-
-// ─── Constants ────────────────────────────────────────────────────────────────
+import Lenis from "lenis";
 
 const OWNER = {
   name: "Nicolás Avilés A.",
@@ -39,8 +39,6 @@ const SOCIAL_LINKS = [
   },
 ] as const;
 
-// ─── Animation variants ────────────────────────────────────────────────────────
-
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 1 } },
@@ -51,30 +49,80 @@ const fadeUpOnView = {
   visible: { opacity: 1, y: 0, transition: { duration: 1 } },
 } as const;
 
-// ─── Sub-components ────────────────────────────────────────────────────────────
+function AnimatedHoverText({ href, text, className = "" }: { href: string, text: string, className?: string }) {
+  return (
+    <motion.a
+      href={href}
+      initial="initial"
+      whileHover="hover"
+      className={`relative flex overflow-hidden whitespace-nowrap cursor-pointer ${className}`}
+    >
+      <div className="flex">
+        {text.split("").map((letter, i) => (
+          <motion.span
+            key={i}
+            variants={{
+              initial: { y: 0 },
+              hover: { y: "-100%" },
+            }}
+            transition={{ duration: 0.3, delay: i * 0.02, ease: [0.33, 1, 0.68, 1] }}
+            className="inline-block"
+          >
+            {letter === " " ? "\u00A0" : letter}
+          </motion.span>
+        ))}
+      </div>
+      <div className="absolute inset-0 flex text-white">
+        {text.split("").map((letter, i) => (
+          <motion.span
+            key={i}
+            variants={{
+              initial: { y: "100%" },
+              hover: { y: 0 },
+            }}
+            transition={{ duration: 0.3, delay: i * 0.02, ease: [0.33, 1, 0.68, 1] }}
+            className="inline-block"
+          >
+            {letter === " " ? "\u00A0" : letter}
+          </motion.span>
+        ))}
+      </div>
+    </motion.a>
+  );
+}
 
 function Navbar() {
   return (
     <nav
       aria-label="Main navigation"
-      className="fixed top-0 left-0 w-full z-50 px-4 md:px-6 py-1 backdrop-blur-md bg-black/5 border-neutral-900"
+      className="fixed top-0 left-0 w-full z-50"
     >
-      <div className="max-w-5xl mx-auto flex items-center justify-between">
-        <img
-          src="/images/logo2.png"
-          alt={`${OWNER.name} logo`}
-          className="h-16 md:h-20 w-auto opacity-99"
-        />
+      <div 
+        className="absolute top-0 left-0 w-full h-[130%] backdrop-blur-md bg-black/10 pointer-events-none"
+        style={{ 
+          maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)',
+          WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%)'
+        }}
+        aria-hidden="true"
+      />
 
-        <ul className="flex gap-8 md:gap-16 text-sm text-neutral-300 list-none">
+      <div className="relative z-10 max-w-5xl mx-auto flex items-center justify-between px-4 md:px-6 py-2">
+        <a href="/" aria-label="Home" className="inline-block">
+          <img
+            src="/images/logo2.png"
+            alt={`${OWNER.name} logo`}
+            className="h-16 md:h-20 w-auto opacity-70 transition-all duration-300 ease-out hover:opacity-100 hover:animate-pulse active:scale-95 cursor-pointer"
+          />
+        </a>
+
+        <ul className="flex gap-8 md:gap-16 text-neutral-300 list-none items-center">
           {NAV_LINKS.map(({ href, label }) => (
             <li key={href}>
-              <a
-                href={href}
-                className="hover:text-white transition-colors duration-300"
-              >
-                {label}
-              </a>
+              <AnimatedHoverText 
+                href={href} 
+                text={label.toUpperCase()} 
+                className="text-xs md:text-sm font-light tracking-[0.25em]"
+              />
             </li>
           ))}
         </ul>
@@ -102,11 +150,13 @@ function HeroSection() {
 
       <div className="absolute inset-0 bg-black/0" aria-hidden="true" />
 
+      <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-b from-transparent to-black z-20 pointer-events-none" />
+
       <motion.div
         variants={fadeUp}
         initial="hidden"
         animate="visible"
-        className="relative z-10 text-center px-4"
+        className="relative z-30 text-center px-4 flex flex-col items-center"
       >
         <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-none">
           {OWNER.name}
@@ -120,7 +170,7 @@ function HeroSection() {
           href="/reel"
           className="inline-flex items-center gap-3 mt-10 px-6 md:px-8 py-3 md:py-4 border border-white/20 rounded-full text-xs md:text-sm uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500"
         >
-          View Demo Reel →
+          VIEW DEMO REEL →
         </a>
       </motion.div>
     </section>
@@ -181,7 +231,7 @@ function ContactFooter() {
       aria-labelledby="contact-heading"
       className="relative z-10 px-6 md:px-10 py-12"
     >
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto w-full">
         <p
           id="contact-heading"
           className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-8"
@@ -211,17 +261,14 @@ function ContactFooter() {
           />
 
           <nav aria-label="Social media links">
-            <ul className="flex gap-8 md:gap-10 text-neutral-400 list-none">
+            <ul className="flex gap-8 md:gap-10 text-neutral-400 list-none items-center">
               {SOCIAL_LINKS.map(({ href, label, rel }) => (
                 <li key={href}>
-                  <a
-                    href={href}
-                    target="_blank"
-                    rel={rel}
-                    className="hover:text-white transition-colors duration-300"
-                  >
-                    {label}
-                  </a>
+                   <AnimatedHoverText 
+                     href={href} 
+                     text={label.toUpperCase()} 
+                     className="text-xs md:text-sm font-light tracking-[0.25em]"
+                   />
                 </li>
               ))}
             </ul>
@@ -231,8 +278,6 @@ function ContactFooter() {
     </footer>
   );
 }
-
-// ─── Shared background wrapper ─────────────────────────────────────────────────
 
 function SharedBackground({ children }: { children: React.ReactNode }) {
   return (
@@ -248,9 +293,26 @@ function SharedBackground({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ─── Page ──────────────────────────────────────────────────────────────────────
-
 export default function Home() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
     <main className="bg-black text-white">
       <Navbar />
