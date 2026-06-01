@@ -158,11 +158,11 @@ function HeroSection() {
         animate="visible"
         className="relative z-30 text-center px-4 flex flex-col items-center"
       >
-        <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-none">
+        <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-none tracking-tight text-white">
           {OWNER.name}
         </h1>
 
-        <p className="mt-6 text-sm md:text-base text-neutral-200 max-w-md mx-auto">
+        <p className="mt-6 text-sm md:text-base text-neutral-400 max-w-md mx-auto font-normal tracking-wide">
           {OWNER.title}
         </p>
 
@@ -239,7 +239,7 @@ function ContactFooter() {
           Contact
         </p>
 
-        <h2 className="text-4xl sm:text-5xl md:text-7xl font-semibold leading-none">
+        <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-none">
           Let&apos;s create
           <br />
           something together.
