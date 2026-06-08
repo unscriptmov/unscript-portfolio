@@ -21,13 +21,13 @@ const CREDITS_LIST = [
   { title: "Confidential Project", studio: "Team Toon Studio", format: "Webseries", role: "2D Animator", year: "2025", image: null, isProtected: true },
   { title: "Confidential Project", studio: "Valpollywood", format: "Feature Film", role: "2D Animator", year: "2025", image: null, isProtected: true },
   { title: "Ormhildur the Brave (Season 1)", studio: "Mako Animation Studio", format: "TV Series", role: "2D Animator & Compositing", year: "2025", image: "/images/orm.png", isProtected: false },
-  { title: "Rick and Morty (Season 8)", studio: "Gasolina Studios / Adult Swim", format: "TV Series", role: "2D Animator", year: "2024", image: "/images/ram8.png", isProtected: false },
+  { title: "Rick and Morty (Season 8)", studio: "Gasolina Studios / Adult Swim", format: "TV Series", role: "2D Animator", year: "2024-2025", image: "/images/ram8.png", isProtected: false },
   { title: "VeeFriends", studio: "Zeppelin Creative Studio", format: "Webseries", role: "2D Animator", year: "2024", image: "/images/veefriends.png", isProtected: false },
   { title: "Thready Bear", studio: "Maneki Studio", format: "Miniseries", role: "2D Animator", year: "2024", image: "/images/thready.png", isProtected: false },
-  { title: "Doggy World (Season 2)", studio: "Zumbastico Studios", format: "TV Series", role: "2D Animator", year: "2024", image: "/images/doggyworld.png", isProtected: false },
+  { title: "Doggy World (Season 2)", studio: "Zumbastico Studios", format: "TV Series", role: "2D Animator", year: "2023-2024", image: "/images/doggyworld.png", isProtected: false },
   { title: "Locos lab (Season 2)", studio: "Dinogorila Creative Lab", format: "TV Series", role: "2D Animator", year: "2023", image: "/images/locoslab2.png", isProtected: false },
   { title: "Las aventuras de la brujita Tatty", studio: "Maneki Studio", format: "Webseries", role: "2D Animator", year: "2022-2023", image: "/images/tatty.png", isProtected: false },
-  { title: "Polinópolis (Season 1)", studio: "Maneki Studio", format: "TV Series", role: "2D Animator", year: "2022", image: "/images/polinopolis.png", isProtected: false },
+  { title: "Polinópolis (Season 1)", studio: "Maneki Studio", format: "TV Series", role: "2D Animator", year: "2021-2022", image: "/images/polinopolis.png", isProtected: false },
   { title: "Las aventuras de Pancha, Rina y Zac", studio: "Niebla Producciones", format: "Miniseries", role: "2D Animator & Rigger", year: "2021", image: "/images/niebla.png", isProtected: false },
 ] as const;
 
