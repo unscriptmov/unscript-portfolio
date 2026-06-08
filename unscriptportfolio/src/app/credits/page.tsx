@@ -48,16 +48,16 @@ function Navbar() {
   return (
     <nav className="fixed top-0 left-0 w-full z-50">
       <div className="absolute top-0 left-0 w-full h-[140%] backdrop-blur-md bg-black/10 pointer-events-none" style={{ maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)" }} />
-      <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 py-4">
-        <a href="/" className="group flex items-center gap-4">
-          <img src="/images/logo2.png" alt="Logo" className="h-14 md:h-16 w-auto opacity-80" />
-          <div className="flex flex-col justify-center leading-normal gap-1.5">
-            <span className="text-white text-sm md:text-base font-medium tracking-[0.25em] uppercase">{OWNER.name}</span>
-            <span className="text-neutral-400 text-[9px] md:text-xs font-light tracking-[0.2em] uppercase">2D Animation Artist</span>
+      <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-between px-4 md:px-10 py-4">
+        <a href="/" className="group flex items-center gap-3">
+          <img src="/images/logo2.png" alt="Logo" className="h-10 md:h-16 w-auto opacity-80" />
+          <div className="flex flex-col justify-center leading-normal gap-0.5 md:gap-1.5">
+            <span className="text-white text-[11px] md:text-base font-medium tracking-[0.2em] md:tracking-[0.25em] uppercase">{OWNER.name}</span>
+            <span className="text-neutral-400 text-[8px] md:text-xs font-light tracking-[0.15em] md:tracking-[0.2em] uppercase">2D Animation Artist</span>
           </div>
         </a>
-        <ul className="flex gap-8 md:gap-14 text-neutral-300 list-none items-center">
-          {NAV_LINKS.map(({ href, label }) => <li key={href}><AnimatedHoverText href={href} text={label.toUpperCase()} className="text-xs md:text-sm font-medium tracking-[0.25em]" /></li>)}
+        <ul className="flex gap-4 md:gap-14 text-neutral-300 list-none items-center">
+          {NAV_LINKS.map(({ href, label }) => <li key={href}><AnimatedHoverText href={href} text={label.toUpperCase()} className="text-[10px] md:text-sm font-medium tracking-[0.2em] md:tracking-[0.25em]" /></li>)}
         </ul>
       </div>
     </nav>
@@ -73,7 +73,7 @@ export default function Credits() {
   }, []);
 
   return (
-    <main className="relative min-h-screen pt-40 pb-16 bg-black">
+    <main className="relative min-h-screen pt-28 md:pt-40 pb-16 bg-black">
       <div className="fixed inset-0 z-0">
         <img src="/images/bgaboutcontact.gif" alt="Background Animation" className="w-full h-full object-cover brightness-[0.4] contrast-[1.1]" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
@@ -81,32 +81,31 @@ export default function Credits() {
 
       <Navbar />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12">
-        {/* Botón de acceso al Reel */}
-        <div className="mb-20 flex flex-col items-center text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-5 md:px-12">
+        <div className="mb-12 md:mb-20 flex flex-col items-center text-center">
           <a 
             href="https://unscriptedream.com/reel" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="group relative px-8 py-3 bg-neutral-900 border border-neutral-700 hover:border-white transition-all duration-300 rounded-full"
+            className="group relative px-6 py-2.5 md:px-8 md:py-3 bg-neutral-900 border border-neutral-700 hover:border-white transition-all duration-300 rounded-full"
           >
-            <span className="text-sm font-medium tracking-[0.2em] uppercase text-white group-hover:tracking-[0.25em] transition-all duration-300">
+            <span className="text-xs md:text-sm font-medium tracking-[0.15em] md:tracking-[0.2em] uppercase text-white group-hover:tracking-[0.2em] md:group-hover:tracking-[0.25em] transition-all duration-300">
               NDA DEMO REEL
             </span>
           </a>
         </div>
 
-        <div className="flex flex-col gap-12 md:gap-16">
+        <div className="flex flex-col gap-8 md:gap-16">
           {CREDITS_LIST.map((credit, index) => {
             const isEven = index % 2 === 0;
             const isProtected = (credit as any).isProtected;
 
             return (
-              <div key={index} className={`grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 pb-4 items-center group ${isProtected ? "opacity-80" : ""}`}>
-                <div className={`relative w-full ${isProtected ? "h-24" : "h-44 md:h-48"} bg-neutral-900/60 rounded-xl overflow-hidden border border-neutral-800/60 transition-all duration-300 ${isEven ? "md:order-1" : "md:order-2"}`}>
+              <div key={index} className={`grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center group ${isProtected ? "opacity-80" : ""}`}>
+                <div className={`relative w-full ${isProtected ? "h-20 md:h-24" : "h-40 md:h-48"} bg-neutral-900/60 rounded-lg md:rounded-xl overflow-hidden border border-neutral-800/60 transition-all duration-300 ${isEven ? "md:order-1" : "md:order-2"}`}>
                   {isProtected ? (
                     <div className="w-full h-full flex items-center justify-center bg-neutral-900/40">
-                      <span className="text-neutral-500 text-[9px] uppercase tracking-[0.3em] font-medium border border-neutral-800 px-3 py-1">NDA Protected</span>
+                      <span className="text-neutral-500 text-[8px] md:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.3em] font-medium border border-neutral-800 px-2 py-0.5 md:px-3 md:py-1">NDA Protected</span>
                     </div>
                   ) : (
                     <img src={(credit as any).image} alt={credit.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -114,17 +113,17 @@ export default function Credits() {
                 </div>
 
                 <div className={`flex flex-col justify-center w-full ${isEven ? "md:order-2 md:pl-4" : "md:order-1 md:items-end md:pr-4"}`}>
-                  <div className={`flex items-center gap-3 text-xs text-neutral-500 mb-2 ${!isEven && "md:flex-row-reverse"}`}>
+                  <div className={`flex items-center gap-2 md:gap-3 text-[10px] md:text-xs text-neutral-500 mb-1 md:mb-2 ${!isEven && "md:flex-row-reverse"}`}>
                     <span className="font-semibold text-neutral-400">{credit.year}</span>
                     <span className="text-neutral-700">•</span>
-                    <span className="uppercase text-[11px]">{credit.format}</span>
+                    <span className="uppercase text-[9px] md:text-[11px]">{credit.format}</span>
                   </div>
-                  <h2 className="text-xl font-bold text-white leading-tight">
+                  <h2 className="text-lg md:text-xl font-bold text-white leading-tight">
                     {isProtected ? <span className="opacity-50 italic">Confidential Project</span> : credit.title}
                   </h2>
-                  <div className={`mt-2 flex gap-3 text-sm text-neutral-400 ${!isEven && "md:flex-row-reverse"}`}>
+                  <div className={`mt-1 md:mt-2 flex gap-2 md:gap-3 text-[11px] md:text-sm text-neutral-400 ${!isEven && "md:flex-row-reverse"}`}>
                     <span className="font-medium text-neutral-300">{credit.role}</span>
-                    <span className="text-neutral-700">|</span>
+                    <span className="text-neutral-700 hidden md:block">|</span>
                     <span className="font-light">{credit.studio}</span>
                   </div>
                 </div>
@@ -133,7 +132,7 @@ export default function Credits() {
           })}
         </div>
 
-        <div className="mt-32 pt-8 border-t border-neutral-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-neutral-500 font-light tracking-wider">
+        <div className="mt-20 md:mt-32 pt-6 md:pt-8 border-t border-neutral-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] md:text-xs text-neutral-500 font-light tracking-wider text-center sm:text-left">
           <span>© 2026 {OWNER.name}</span>
           <p>Reel password upon request at: <a href={`mailto:${OWNER.email}`} className="text-neutral-400 hover:text-white underline">{OWNER.email}</a></p>
         </div>

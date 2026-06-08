@@ -103,30 +103,30 @@ function Navbar() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-between px-6 md:px-10 py-4">
+      <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-between px-4 md:px-10 py-4">
         <a href="/" aria-label="Home" className="group flex items-center gap-4 transition-all duration-300">
           <img
             src="/images/logo2.png"
             alt={`${OWNER.name} logo`}
-            className="h-14 md:h-16 w-auto opacity-80 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:animate-pulse active:scale-95 cursor-pointer"
+            className="h-10 md:h-16 w-auto opacity-80 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:animate-pulse active:scale-95 cursor-pointer"
           />
           <div className="flex flex-col justify-center select-none leading-normal gap-1.5">
-            <span className="text-white text-sm md:text-base font-medium tracking-[0.25em] uppercase transition-colors duration-300 group-hover:text-neutral-300">
+            <span className="text-white text-[10px] md:text-base font-medium tracking-[0.2em] md:tracking-[0.25em] uppercase transition-colors duration-300 group-hover:text-neutral-300">
               {OWNER.name}
             </span>
-            <span className="text-neutral-400 text-[9px] md:text-xs font-light tracking-[0.2em] uppercase opacity-90">
+            <span className="text-neutral-400 text-[8px] md:text-xs font-light tracking-[0.15em] md:tracking-[0.2em] uppercase opacity-90">
               2D Animation Artist
             </span>
           </div>
         </a>
 
-        <ul className="flex gap-8 md:gap-14 text-neutral-300 list-none items-center">
+        <ul className="flex gap-4 md:gap-14 text-neutral-300 list-none items-center">
           {NAV_LINKS.map(({ href, label }) => (
             <li key={href}>
               <AnimatedHoverText
                 href={href}
                 text={label.toUpperCase()}
-                className="text-xs md:text-sm font-medium tracking-[0.25em]"
+                className="text-[10px] md:text-sm font-medium tracking-[0.2em] md:tracking-[0.25em]"
               />
             </li>
           ))}
@@ -161,7 +161,7 @@ function HeroSection() {
       >
         <a
           href="/reel"
-          className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 border border-white/20 rounded-full text-xs md:text-sm uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500 bg-black/10 backdrop-blur-sm"
+          className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 border border-white/20 rounded-full text-[10px] md:text-sm uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500 bg-black/10 backdrop-blur-sm"
         >
           VIEW DEMO REEL →
         </a>
@@ -180,30 +180,30 @@ function AboutSection() {
         viewport={{ once: true }}
         className="max-w-6xl mx-auto"
       >
-        <p id="about-heading" className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-12 md:mb-16">
+        <p id="about-heading" className="text-[10px] md:text-sm uppercase tracking-[0.25em] text-neutral-500 mb-8 md:mb-16">
           About
         </p>
 
-        <div className="grid md:grid-cols-[320px_1fr] gap-12 md:gap-24 items-center">
+        <div className="grid md:grid-cols-[320px_1fr] gap-8 md:gap-24 items-center">
           <div className="flex justify-center md:justify-start">
             <img
               src="/images/profile.jpg"
               alt={`Portrait of ${OWNER.name}`}
-              className="w-60 h-60 md:w-80 md:h-80 object-cover rounded-2xl grayscale hover:grayscale-50 transition duration-500"
+              className="w-48 h-48 md:w-80 md:h-80 object-cover rounded-2xl grayscale hover:grayscale-50 transition duration-500"
             />
           </div>
 
           <div className="max-w-2xl text-center md:text-left">
-            <h2 className="text-2xl md:text-3xl leading-tight font-semibold mb-8 md:mb-10">
+            <h2 className="text-xl md:text-3xl leading-tight font-semibold mb-6 md:mb-10">
               {OWNER.headline}
             </h2>
 
-            <div className="text-neutral-300 text-base md:text-xl leading-relaxed space-y-4">
+            <div className="text-neutral-300 text-sm md:text-xl leading-relaxed space-y-4">
               {OWNER.bio.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
 
-              <p className="pt-2 text-neutral-300">
+              <p className="pt-2 text-neutral-300 text-[13px] md:text-base">
                 Reel password upon request at:{" "}
                 <a
                   href={`mailto:${OWNER.email}`}
@@ -224,18 +224,18 @@ function ContactFooter() {
   return (
     <footer id="contact" aria-labelledby="contact-heading" className="relative z-10 px-6 md:px-10">
       <div className="max-w-6xl mx-auto w-full">
-        <p id="contact-heading" className="text-sm uppercase tracking-[0.3em] text-neutral-500 mb-8">
+        <p id="contact-heading" className="text-[10px] md:text-sm uppercase tracking-[0.25em] text-neutral-500 mb-8">
           Contact
         </p>
 
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-none tracking-tight">
+        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-none tracking-tight">
           Let&apos;s create
           <br />
           something together.
         </h2>
 
-        <div className="mt-10 flex flex-col md:flex-row items-start md:items-end gap-10">
-          <address className="not-italic min-w-[220px] text-neutral-400">
+        <div className="mt-10 flex flex-col md:flex-row items-start md:items-end gap-8">
+          <address className="not-italic min-w-min text-neutral-400 text-sm md:text-base">
             <a href={`mailto:${OWNER.email}`} className="hover:text-white transition-colors duration-300">
               {OWNER.email}
             </a>
@@ -244,13 +244,13 @@ function ContactFooter() {
           <div className="hidden md:block flex-1 border-b border-neutral-700 mb-2" aria-hidden="true" />
 
           <nav aria-label="Social media links">
-            <ul className="flex gap-8 md:gap-10 text-neutral-400 list-none items-center">
+            <ul className="flex gap-6 md:gap-10 text-neutral-400 list-none items-center">
               {SOCIAL_LINKS.map(({ href, label }) => (
                 <li key={href}>
                   <AnimatedHoverText
                     href={href}
                     text={label.toUpperCase()}
-                    className="text-xs md:text-sm font-light tracking-[0.25em]"
+                    className="text-[10px] md:text-sm font-light tracking-[0.25em]"
                   />
                 </li>
               ))}
@@ -264,14 +264,14 @@ function ContactFooter() {
 
 function SharedBackground({ children }: { children: React.ReactNode }) {
   return (
-    <section id="about" className="relative overflow-hidden pt-24 md:pt-32 pb-12">
+    <section id="about" className="relative overflow-hidden pt-16 md:pt-32 pb-12">
       <div
         aria-hidden="true"
         className="absolute inset-0 bg-cover bg-center blur-10 scale-110 opacity-30"
         style={{ backgroundImage: "url('/images/bgaboutcontact.gif')" }}
       />
       <div aria-hidden="true" className="absolute inset-0 bg-black/80" />
-      <div className="flex flex-col gap-16 md:gap-20">
+      <div className="flex flex-col gap-12 md:gap-20">
         {children}
       </div>
     </section>
