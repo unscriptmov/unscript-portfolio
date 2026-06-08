@@ -72,6 +72,7 @@ function AnimatedHoverText({ href, text, className = "" }: { href: string; text:
           </motion.span>
         ))}
       </div>
+
       <div className="absolute inset-0 flex text-white">
         {text.split("").map((letter, i) => (
           <motion.span
@@ -203,11 +204,11 @@ function AboutSection() {
                 <p key={index}>{paragraph}</p>
               ))}
 
-              <p className="pt-2 text-neutral-300 text-[13px] md:text-base">
+              <p className="pt-6 text-neutral-400 text-[11px] md:text-sm uppercase tracking-[0.15em]">
                 Reel password upon request at:{" "}
                 <a
                   href={`mailto:${OWNER.email}`}
-                  className="text-white font-semibold underline underline-offset-4 decoration-white/60 hover:decoration-white transition-colors duration-300 inline-block"
+                  className="text-white font-medium underline underline-offset-4 decoration-white/60 hover:decoration-white transition-colors duration-300 inline-block ml-1"
                 >
                   {OWNER.email}
                 </a>
@@ -299,7 +300,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-black text-white">
+    <main className="bg-black text-white font-sans">
       <Navbar />
       <HeroSection />
       <SharedBackground>
