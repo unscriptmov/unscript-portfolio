@@ -9,10 +9,10 @@ const OWNER = {
   title: "2D Animator",
   email: "avilesarayan@gmail.com",
   bio: [
-    "I'm a Chilean animation artist with 5+ years of industry experience, ranging from short films and TV series to feature films.",
-    "I've had the opportunity to be part of the animation teams for series such as Rick and Morty (Season 8) and Doggy World (Season 2), in addition to a selection of upcoming, unannounced productions.",
-    "I consider myself a detail-oriented professional who values teamwork. My goal is to be a positive asset to the team.",
-  ],
+    "I'm a Chilean animation artist with over 5 years of industry experience, ranging from short films and TV series to feature films.",
+    <>I've had the opportunity to be part of the animation teams for series such as <em>Rick and Morty</em> «Season 8» and <em>Doggy World</em> «Season 2», in addition to a selection of upcoming, unannounced productions.</>,
+    "I consider myself a detail-oriented professional who values teamwork, and my goal is to always be a positive asset to the team.",
+  ] as React.ReactNode[],
   headline: "2D Animator | International & National Projects",
 } as const;
 
@@ -137,6 +137,33 @@ function Navbar() {
   );
 }
 
+function ScrollIndicator() {
+  return (
+    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 z-30 select-none pointer-events-none">
+      <span className="text-[9px] uppercase tracking-[0.3em] text-neutral-500 font-light">
+        Scroll
+      </span>
+      <div className="relative w-5 h-5 flex items-center justify-center">
+        {/* Rombo exterior animado (Pulso geométrico) */}
+        <motion.div
+          animate={{
+            scale: [0.6, 1.4],
+            opacity: [0.8, 0],
+          }}
+          transition={{
+            duration: 2.5,
+            ease: [0.25, 1, 0.5, 1],
+            repeat: Infinity,
+          }}
+          className="absolute w-3 h-3 border border-white rotate-45"
+        />
+        {/* Punto central estático */}
+        <div className="w-1 h-1 bg-white rotate-45 rounded-[1px]" />
+      </div>
+    </div>
+  );
+}
+
 function HeroSection() {
   return (
     <section aria-label="Hero" className="relative h-screen flex items-center justify-center px-6 overflow-hidden">
@@ -167,6 +194,8 @@ function HeroSection() {
           VIEW DEMO REEL →
         </a>
       </motion.div>
+
+      <ScrollIndicator />
     </section>
   );
 }
