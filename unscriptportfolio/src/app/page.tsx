@@ -98,7 +98,7 @@ function Navbar() {
             <span className="text-neutral-400 text-[8px] md:text-xs font-light tracking-[0.15em] md:tracking-[0.2em] uppercase opacity-90">
               2D Animation Artist
             </span>
-          </div>
+                      </div>
         </a>
         <ul className="flex gap-4 md:gap-14 text-neutral-300 list-none items-center">
           {NAV_LINKS.map(({ href, label }) => (
@@ -163,7 +163,7 @@ function AboutSection() {
             <img
               src="/images/profile.jpg"
               alt={`Portrait of ${OWNER.name}`}
-              className="w-48 h-48 md:w-80 md:h-80 object-cover rounded-2xl grayscale"
+              className="w-48 h-48 md:w-80 md:h-80 object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
             />
           </div>
           <div className="max-w-2xl text-center md:text-left">
@@ -208,7 +208,7 @@ function ContactFooter() {
                 </li>
               ))}
             </ul>
-          </nav>
+                      </nav>
         </div>
       </div>
     </footer>
