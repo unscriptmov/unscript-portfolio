@@ -5,7 +5,7 @@ import { useState, useCallback } from "react";
 // ─── Constants ─────────────────────────────────────────────────────────────────
 
 const REEL_EMBED_URL =
-  "https://drive.google.com/file/d/1OFPnMbk6sFN9Z-uGRURiZHah7IfzRuZG/preview";
+  "https://res.cloudinary.com/dp2y2sz6l/video/upload/v1781279925/DemoReel_2026-Nicolas_Aviles-S1-web_rmdfbq.mp4";
 
 // ─── Types ──────────────────────────────────────────────────────────────────────
 
@@ -85,11 +85,13 @@ function ReelPlayer() {
       </p>
 
       <div className="w-full aspect-video min-h-[220px] sm:min-h-[320px] md:min-h-0 rounded-2xl overflow-hidden border border-white/10">
-        <iframe
+        <video
           src={REEL_EMBED_URL}
           title="Demo Reel 2026"
           className="w-full h-full min-h-[220px] sm:min-h-[320px] md:min-h-0"
-          allow="autoplay"
+          controls
+          autoPlay
+          playsInline
         />
       </div>
     </div>
