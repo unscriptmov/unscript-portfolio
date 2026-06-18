@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SmoothScroll from "./SmoothScroll";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script"; // 1. Importamos el componente de Next.js
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/images/favicon.ico",
   },
+  verification: {
+    google: "TU_CODIGO_DE_SEARCH_CONSOLE",
+  },
 };
 
 export default function RootLayout({
@@ -33,7 +36,6 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* 2. Añadimos los scripts de Google Analytics dentro del <head> */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-V1MCPT6XT0"
           strategy="afterInteractive"
