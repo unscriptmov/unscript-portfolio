@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     icon: "/images/favicon.ico",
   },
   verification: {
-    google: "TU_CODIGO_DE_SEARCH_CONSOLE",
+    google: "NknycvILVk67q9z-3j9eV73LcN-isEQrZNSHeSMsp8c",
   },
 };
 
