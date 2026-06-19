@@ -3,17 +3,13 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import Lenis from "lenis";
+import Link from "next/link";
 
 const OWNER = {
   name: "Nicolás Avilés A.",
   title: "2D Animator",
   email: "avilesarayan@gmail.com",
 } as const;
-
-const NAV_LINKS = [
-  { href: "/#about", label: "About" },
-  { href: "/credits", label: "Credits" },
-] as const;
 
 const SOCIAL_LINKS = [
   { href: "https://vimeo.com/unscriptedream", label: "Vimeo", rel: "noopener noreferrer" },
@@ -47,14 +43,9 @@ const CREDITS_LIST: readonly CreditItem[] = [
   { title: "Las aventuras de Pancha, Rina y Zac", studio: "Niebla Producciones", format: "Miniseries", role: "2D Animator & Rigger", year: "2021", image: "/images/niebla.png", isProtected: false },
 ] as const;
 
-function AnimatedHoverText({ href, text, className = "" }: { href: string; text: string; className?: string }) {
+function AnimatedHoverText({ text, className = "" }: { text: string; className?: string }) {
   return (
-    <motion.a
-      href={href}
-      initial="initial"
-      whileHover="hover"
-      className={`relative flex overflow-hidden whitespace-nowrap cursor-pointer ${className}`}
-    >
+    <div className={`relative flex overflow-hidden whitespace-nowrap cursor-pointer ${className}`}>
       <div className="flex">
         {text.split("").map((letter, i) => (
           <motion.span
@@ -79,50 +70,7 @@ function AnimatedHoverText({ href, text, className = "" }: { href: string; text:
           </motion.span>
         ))}
       </div>
-    </motion.a>
-  );
-}
-
-function Navbar() {
-  return (
-    <nav aria-label="Main navigation" className="fixed top-0 left-0 w-full z-50">
-      <div
-        className="absolute top-0 left-0 w-full h-[140%] backdrop-blur-md bg-black/10 pointer-events-none z-0"
-        style={{
-          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
-          WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
-        }}
-        aria-hidden="true"
-      />
-      <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-between px-4 md:px-10 py-4">
-        <a href="/" aria-label="Home" className="group relative z-20 flex items-center gap-4 transition-all duration-300">
-          <img
-            src="/images/logo2.png"
-            alt={`${OWNER.name} logo`}
-            className="h-10 md:h-16 w-auto opacity-80 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:animate-pulse active:scale-95 cursor-pointer"
-          />
-          <div className="flex flex-col justify-center select-none leading-normal gap-1.5">
-            <span className="text-white text-[10px] md:text-base font-medium tracking-[0.2em] md:tracking-[0.25em] uppercase transition-colors duration-300 group-hover:text-neutral-300">
-              {OWNER.name}
-            </span>
-            <span className="text-neutral-400 text-[8px] md:text-xs font-light tracking-[0.15em] md:tracking-[0.2em] uppercase opacity-90">
-              2D Animation Artist
-            </span>
-          </div>
-        </a>
-        <ul className="relative z-20 flex gap-4 md:gap-14 text-neutral-300 list-none items-center">
-          {NAV_LINKS.map(({ href, label }) => (
-            <li key={href}>
-              <AnimatedHoverText
-                href={href}
-                text={label.toUpperCase()}
-                className="text-[10px] md:text-sm font-medium tracking-[0.2em] md:tracking-[0.25em]"
-              />
-            </li>
-          ))}
-        </ul>
-      </div>
-    </nav>
+    </div>
   );
 }
 
@@ -130,7 +78,6 @@ function CompactFooter() {
   return (
     <footer className="relative z-10 px-6 md:px-10 mt-24 md:mt-40">
       <div className="max-w-5xl mx-auto w-full">
-        {/* Fila del Correo Electrónico, Línea Divisoria y Redes Sociales */}
         <div className="flex flex-col md:flex-row items-start md:items-end gap-8">
           <address className="not-italic min-w-min text-neutral-400 text-sm md:text-base">
             <a href={`mailto:${OWNER.email}`} className="hover:text-white transition-colors duration-300">{OWNER.email}</a>
@@ -140,7 +87,11 @@ function CompactFooter() {
             <ul className="flex gap-6 md:gap-10 text-neutral-400 list-none items-center">
               {SOCIAL_LINKS.map(({ href, label }) => (
                 <li key={href}>
-                  <AnimatedHoverText href={href} text={label.toUpperCase()} className="text-[10px] md:text-sm font-light tracking-[0.25em]" />
+                  <a href={href} target="_blank" rel="noopener noreferrer" className="group">
+                    <motion.div initial="initial" whileHover="hover">
+                      <AnimatedHoverText text={label.toUpperCase()} className="text-[10px] md:text-sm font-light tracking-[0.25em]" />
+                    </motion.div>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -164,7 +115,6 @@ export default function Credits() {
 
   return (
     <main className="relative min-h-screen pt-28 md:pt-40 pb-16 bg-black text-white font-sans">
-      {/* Inyección de la animación CSS de shimmer (destello) localmente */}
       <style dangerouslySetInnerHTML={{__html: `
         @keyframes shimmer-move {
           0% { transform: translateX(-150%) skewX(-15deg); }
@@ -180,27 +130,23 @@ export default function Credits() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
       </div>
 
-      <Navbar />
-
       <div className="relative z-10 max-w-5xl mx-auto px-5 md:px-12">
         <div className="mb-12 md:mb-20 flex flex-col items-center text-center">
-          <a
+          <Link
             href="/reel"
             className="relative inline-flex items-center gap-4 px-8 py-4 border border-white/10 rounded-full text-[10px] md:text-xs font-medium uppercase tracking-[0.3em] overflow-hidden group bg-black/40 backdrop-blur-md transition-all duration-300 hover:border-white/30"
           >
-            {/* Capa de destello de luz que recorre el botón */}
             <span className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 animate-shimmer pointer-events-none" />
             
             <span className="relative z-10 text-neutral-300 group-hover:text-white transition-colors duration-300">
               Play NDA Demo Reel
             </span>
             
-            {/* Indicador de grabación dinámico (Estilo REC) */}
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white/60 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
             </span>
-          </a>
+          </Link>
         </div>
 
         <div className="flex flex-col gap-8 md:gap-16">

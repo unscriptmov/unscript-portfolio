@@ -1,40 +1,21 @@
-import type { Metadata } from "next";
+"use client";
+
+import { usePathname } from "next/navigation";
+import Navbar from "./components/Navbar";
 import SmoothScroll from "./SmoothScroll";
-import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Unscriptedream ┃ 2D Animator",
-  description: "2D Animator",
-  icons: {
-    icon: "/images/favicon.ico",
-  },
-  verification: {
-    google: "NknycvILVk67q9z-3j9eV73LcN-isEQrZNSHeSMsp8c",
-  },
-};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const showNavbar = pathname !== "/reel";
+
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang="en" className="h-full antialiased">
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-V1MCPT6XT0"
@@ -49,8 +30,9 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="min-h-full flex flex-col bg-black text-white">
+      <body className="min-h-full flex flex-col">
         <SmoothScroll />
+        {showNavbar && <Navbar />}
         {children}
       </body>
     </html>
