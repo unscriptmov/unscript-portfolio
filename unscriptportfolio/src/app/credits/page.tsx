@@ -128,8 +128,9 @@ function Navbar() {
 
 function CompactFooter() {
   return (
-    <footer className="relative z-10 px-6 md:px-10 mt-24 md:mt-40 pb-12">
+    <footer className="relative z-10 px-6 md:px-10 mt-24 md:mt-40">
       <div className="max-w-5xl mx-auto w-full">
+        {/* Fila del Correo Electrónico, Línea Divisoria y Redes Sociales */}
         <div className="flex flex-col md:flex-row items-start md:items-end gap-8">
           <address className="not-italic min-w-min text-neutral-400 text-sm md:text-base">
             <a href={`mailto:${OWNER.email}`} className="hover:text-white transition-colors duration-300">{OWNER.email}</a>
@@ -163,6 +164,17 @@ export default function Credits() {
 
   return (
     <main className="relative min-h-screen pt-28 md:pt-40 pb-16 bg-black text-white font-sans">
+      {/* Inyección de la animación CSS de shimmer (destello) localmente */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes shimmer-move {
+          0% { transform: translateX(-150%) skewX(-15deg); }
+          100% { transform: translateX(150%) skewX(-15deg); }
+        }
+        .animate-shimmer {
+          animation: shimmer-move 2.5s infinite ease-in-out;
+        }
+      `}} />
+
       <div className="fixed inset-0 z-0">
         <img src="/images/bgaboutcontact.gif" alt="Background Animation" className="w-full h-full object-cover brightness-[0.4] contrast-[1.1]" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
@@ -172,12 +184,21 @@ export default function Credits() {
 
       <div className="relative z-10 max-w-5xl mx-auto px-5 md:px-12">
         <div className="mb-12 md:mb-20 flex flex-col items-center text-center">
-          <a 
-            href="/reel" 
-            className="group relative px-6 py-2.5 md:px-8 md:py-3 bg-neutral-900 border border-neutral-700 hover:border-white transition-all duration-300 rounded-full"
+          <a
+            href="/reel"
+            className="relative inline-flex items-center gap-4 px-8 py-4 border border-white/10 rounded-full text-[10px] md:text-xs font-medium uppercase tracking-[0.3em] overflow-hidden group bg-black/40 backdrop-blur-md transition-all duration-300 hover:border-white/30"
           >
-            <span className="text-xs md:text-sm font-medium tracking-[0.15em] md:tracking-[0.2em] uppercase text-white group-hover:tracking-[0.2em] md:group-hover:tracking-[0.25em] transition-all duration-300">
-              NDA DEMO REEL
+            {/* Capa de destello de luz que recorre el botón */}
+            <span className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 animate-shimmer pointer-events-none" />
+            
+            <span className="relative z-10 text-neutral-300 group-hover:text-white transition-colors duration-300">
+              Play NDA Demo Reel
+            </span>
+            
+            {/* Indicador de grabación dinámico (Estilo REC) */}
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white/60 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
             </span>
           </a>
         </div>
