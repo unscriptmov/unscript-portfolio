@@ -22,7 +22,7 @@ const NAV_LINKS = [
 ] as const;
 
 const SOCIAL_LINKS = [
-  { href: "https://vimeo.com/nicolasavilesa", label: "Vimeo", rel: "noopener noreferrer" },
+  { href: "https://vimeo.com/unscriptedream", label: "Vimeo", rel: "noopener noreferrer" },
   { href: "https://linkedin.com/in/nicolasavilesa", label: "LinkedIn", rel: "noopener noreferrer" },
   { href: "https://instagram.com/unscriptedream", label: "Instagram", rel: "noopener noreferrer" },
 ] as const;
@@ -98,7 +98,7 @@ function Navbar() {
             <span className="text-neutral-400 text-[8px] md:text-xs font-light tracking-[0.15em] md:tracking-[0.2em] uppercase opacity-90">
               2D Animation Artist
             </span>
-                      </div>
+          </div>
         </a>
         <ul className="flex gap-4 md:gap-14 text-neutral-300 list-none items-center">
           {NAV_LINKS.map(({ href, label }) => (
@@ -145,7 +145,7 @@ function HeroSection() {
           href="/reel"
           className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 border border-white/20 rounded-full text-[10px] md:text-sm uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500 bg-black/10 backdrop-blur-sm"
         >
-          VIEW DEMO REEL →
+          VIEW NDA DEMO REEL →
         </a>
       </motion.div>
       <ScrollIndicator />
@@ -208,7 +208,7 @@ function ContactFooter() {
                 </li>
               ))}
             </ul>
-                      </nav>
+          </nav>
         </div>
       </div>
     </footer>
