@@ -23,7 +23,7 @@ const NAV_LINKS = [
 
 const SOCIAL_LINKS = [
   { href: "https://vimeo.com/unscriptedream", label: "Vimeo", rel: "noopener noreferrer" },
-  { href: "https://linkedin.com/in/nicolasavilesa", label: "LinkedIn", rel: "noopener noreferrer" },
+  { href: "https://www.linkedin.com/in/unscriptedream/", label: "LinkedIn", rel: "noopener noreferrer" },
   { href: "https://instagram.com/unscriptedream", label: "Instagram", rel: "noopener noreferrer" },
 ] as const;
 
@@ -138,14 +138,37 @@ function HeroSection() {
       <video autoPlay muted loop playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover opacity-50">
         <source src="/videos/bg-loop.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-black/0" aria-hidden="true" />
+      <div className="absolute inset-0 bg-black/10" aria-hidden="true" />
       <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-b from-transparent to-black z-20 pointer-events-none" />
-      <motion.div variants={fadeUp} initial="hidden" animate="visible" className="relative z-30 text-center px-4 flex flex-col items-center">
+      
+      <motion.div variants={fadeUp} initial="hidden" animate="visible" className="relative z-30 text-center px-4">
+        {/* Inyección de la animación CSS de shimmer (destello) localmente */}
+        <style dangerouslySetInnerHTML={{__html: `
+          @keyframes shimmer-move {
+            0% { transform: translateX(-150%) skewX(-15deg); }
+            100% { transform: translateX(150%) skewX(-15deg); }
+          }
+          .animate-shimmer {
+            animation: shimmer-move 2.5s infinite ease-in-out;
+          }
+        `}} />
+
         <a
           href="/reel"
-          className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 border border-white/20 rounded-full text-[10px] md:text-sm uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all duration-500 bg-black/10 backdrop-blur-sm"
+          className="relative inline-flex items-center gap-4 px-8 py-4 border border-white/10 rounded-full text-[10px] md:text-xs font-medium uppercase tracking-[0.3em] overflow-hidden group bg-black/40 backdrop-blur-md transition-all duration-300 hover:border-white/30"
         >
-          VIEW NDA DEMO REEL →
+          {/* Capa de destello de luz que recorre el botón */}
+          <span className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 animate-shimmer pointer-events-none" />
+          
+          <span className="relative z-10 text-neutral-300 group-hover:text-white transition-colors duration-300">
+            Play NDA Demo Reel
+          </span>
+          
+          {/* Indicador de grabación dinámico (Estilo REC) */}
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white/60 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+          </span>
         </a>
       </motion.div>
       <ScrollIndicator />
@@ -170,15 +193,6 @@ function AboutSection() {
             <h2 className="text-xl md:text-3xl leading-tight font-semibold mb-6 md:mb-10">{OWNER.headline}</h2>
             <div className="text-neutral-300 text-sm md:text-xl leading-relaxed space-y-4">
               {OWNER.bio.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-              <p className="pt-6 text-neutral-400 text-[11px] md:text-sm uppercase tracking-[0.15em]">
-                Reel password upon request at:{" "}
-                <a
-                  href={`mailto:${OWNER.email}`}
-                  className="text-white font-medium underline underline-offset-4 decoration-white/60 hover:decoration-white transition-colors duration-300 inline-block ml-1"
-                >
-                  {OWNER.email}
-                </a>
-              </p>
             </div>
           </div>
         </div>

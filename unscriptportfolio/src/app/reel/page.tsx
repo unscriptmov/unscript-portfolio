@@ -39,49 +39,61 @@ function PasswordForm({ password, status, onChange, onSubmit }: PasswordFormProp
   };
 
   return (
-    <div className="relative z-10 w-full max-w-md text-center">
-      <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-neutral-500 mb-6">
-        Private Demo Reel
-      </p>
-
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold mb-10">
-        Enter Password
+    <div className="relative z-10 w-full max-w-xl text-center flex flex-col items-center px-4">
+      {/* Título con mejor peso y tracking escalado */}
+      <h1 className="text-sm md:text-lg font-semibold uppercase tracking-[0.4em] text-neutral-300 mb-12 select-none">
+        NDA Demo Reel
       </h1>
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => onChange(e.target.value)}
-        onKeyDown={handleKeyDown}
-        disabled={status === "loading"}
-        aria-label="Demo reel password"
-        aria-invalid={status === "error"}
-        className="w-full bg-transparent border border-white/20 rounded-full px-6 py-4 text-center outline-none focus:border-white transition-all duration-300 disabled:opacity-50"
-      />
+      {/* Contenedor del input con ancho óptimo para escritorio */}
+      <div className="w-full max-w-[320px]">
+        <input
+          type="password"
+          placeholder={status === "loading" ? "Verifying…" : "Password"}
+          value={password}
+          onChange={(e) => onChange(e.target.value)}
+          onKeyDown={handleKeyDown}
+          disabled={status === "loading"}
+          aria-label="Demo reel password"
+          aria-invalid={status === "error"}
+          className="w-full bg-transparent border-b-2 border-white/20 py-3 text-center outline-none focus:border-white transition-all duration-300 disabled:opacity-50 text-base md:text-xl tracking-[0.25em] placeholder:tracking-[0.15em] placeholder:text-neutral-600"
+        />
+      </div>
 
       {status === "error" && (
-        <p role="alert" className="mt-3 text-sm text-red-400">
+        <p role="alert" className="mt-6 text-xs md:text-sm tracking-widest text-red-400 uppercase font-light">
           Incorrect password. Try again.
         </p>
       )}
 
-      <button
-        onClick={onSubmit}
-        disabled={status === "loading" || password.trim() === ""}
-        className="mt-6 px-6 md:px-8 py-3 md:py-4 border border-white/20 rounded-full uppercase tracking-[0.2em] text-sm hover:bg-white hover:text-black transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {status === "loading" ? "Verifying…" : "Enter"}
-      </button>
+      {/* Sección inferior más visible y limpia */}
+      <p className="mt-16 text-neutral-500 text-[11px] md:text-xs tracking-[0.25em] uppercase font-light leading-relaxed">
+        Request password at:<br />
+        <a 
+          href="mailto:avilesarayan@gmail.com" 
+          className="text-neutral-300 underline underline-offset-4 hover:text-white transition-colors duration-300 inline-block mt-2 tracking-wide lowercase font-normal text-xs md:text-sm"
+        >
+          avilesarayan@gmail.com
+        </a>
+      </p>
     </div>
   );
 }
 
 function ReelPlayer() {
+  const handleVideoPlay = () => {
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag("event", "video_start", {
+        event_category: 'Engagement',
+        event_label: 'Reel de Animacion 2026'
+      });
+    }
+  };
+
   return (
     <div className="relative z-10 w-full max-w-6xl">
       <p className="text-xs md:text-sm uppercase tracking-[0.3em] text-neutral-500 mb-6">
-        Demo Reel 2026
+        NDA Demo Reel 2026
       </p>
 
       <div className="w-full aspect-video min-h-[220px] sm:min-h-[320px] md:min-h-0 rounded-2xl overflow-hidden border border-white/10">
@@ -92,6 +104,7 @@ function ReelPlayer() {
           controls
           autoPlay
           playsInline
+          onPlay={handleVideoPlay}
         />
       </div>
     </div>
@@ -120,6 +133,12 @@ export default function ReelPage() {
       const data = await res.json();
 
       if (res.ok && data.authorized) {
+        if (typeof window !== "undefined" && (window as any).gtag) {
+          (window as any).gtag("event", "reel_unlocked", {
+            event_category: 'Access',
+            event_label: 'Password Correcto'
+          });
+        }
         setAuthorized(true);
       } else {
         setStatus("error");

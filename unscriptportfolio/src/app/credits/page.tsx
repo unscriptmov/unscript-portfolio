@@ -15,7 +15,23 @@ const NAV_LINKS = [
   { href: "/credits", label: "Credits" },
 ] as const;
 
-const CREDITS_LIST = [
+const SOCIAL_LINKS = [
+  { href: "https://vimeo.com/unscriptedream", label: "Vimeo", rel: "noopener noreferrer" },
+  { href: "https://www.linkedin.com/in/unscriptedream/", label: "LinkedIn", rel: "noopener noreferrer" },
+  { href: "https://instagram.com/unscriptedream", label: "Instagram", rel: "noopener noreferrer" },
+] as const;
+
+interface CreditItem {
+  title: string;
+  studio: string;
+  format: string;
+  role: string;
+  year: string;
+  image: string | null;
+  isProtected: boolean;
+}
+
+const CREDITS_LIST: readonly CreditItem[] = [
   { title: "Confidential Project", studio: "Bombillo Amarillo", format: "Feature Film", role: "2D Animator", year: "2026", image: null, isProtected: true },
   { title: "Confidential Project", studio: "Bombillo Amarillo", format: "TV Series", role: "2D Animator", year: "2026", image: null, isProtected: true },
   { title: "Confidential Project", studio: "Team Toon Studio", format: "Webseries", role: "2D Animator", year: "2025", image: null, isProtected: true },
@@ -33,12 +49,35 @@ const CREDITS_LIST = [
 
 function AnimatedHoverText({ href, text, className = "" }: { href: string; text: string; className?: string }) {
   return (
-    <motion.a href={href} initial="initial" whileHover="hover" className={`relative flex overflow-hidden whitespace-nowrap cursor-pointer ${className}`}>
+    <motion.a
+      href={href}
+      initial="initial"
+      whileHover="hover"
+      className={`relative flex overflow-hidden whitespace-nowrap cursor-pointer ${className}`}
+    >
       <div className="flex">
-        {text.split("").map((letter, i) => <motion.span key={i} variants={{ initial: { y: 0 }, hover: { y: "-100%" } }} transition={{ duration: 0.3, delay: i * 0.02, ease: [0.33, 1, 0.68, 1] }} className="inline-block">{letter === " " ? "\u00A0" : letter}</motion.span>)}
+        {text.split("").map((letter, i) => (
+          <motion.span
+            key={i}
+            variants={{ initial: { y: 0 }, hover: { y: "-100%" } }}
+            transition={{ duration: 0.3, delay: i * 0.02, ease: [0.33, 1, 0.68, 1] }}
+            className="inline-block"
+          >
+            {letter === " " ? "\u00A0" : letter}
+          </motion.span>
+        ))}
       </div>
       <div className="absolute inset-0 flex text-white">
-        {text.split("").map((letter, i) => <motion.span key={i} variants={{ initial: { y: "100%" }, hover: { y: 0 } }} transition={{ duration: 0.3, delay: i * 0.02, ease: [0.33, 1, 0.68, 1] }} className="inline-block">{letter === " " ? "\u00A0" : letter}</motion.span>)}
+        {text.split("").map((letter, i) => (
+          <motion.span
+            key={i}
+            variants={{ initial: { y: "100%" }, hover: { y: 0 } }}
+            transition={{ duration: 0.3, delay: i * 0.02, ease: [0.33, 1, 0.68, 1] }}
+            className="inline-block"
+          >
+            {letter === " " ? "\u00A0" : letter}
+          </motion.span>
+        ))}
       </div>
     </motion.a>
   );
@@ -46,34 +85,84 @@ function AnimatedHoverText({ href, text, className = "" }: { href: string; text:
 
 function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 w-full z-50">
-      <div className="absolute top-0 left-0 w-full h-[140%] backdrop-blur-md bg-black/10 pointer-events-none" style={{ maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)" }} />
+    <nav aria-label="Main navigation" className="fixed top-0 left-0 w-full z-50">
+      <div
+        className="absolute top-0 left-0 w-full h-[140%] backdrop-blur-md bg-black/10 pointer-events-none z-0"
+        style={{
+          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%)",
+        }}
+        aria-hidden="true"
+      />
       <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-between px-4 md:px-10 py-4">
-        <a href="/" className="group flex items-center gap-3">
-          <img src="/images/logo2.png" alt="Logo" className="h-10 md:h-16 w-auto opacity-80" />
-          <div className="flex flex-col justify-center leading-normal gap-0.5 md:gap-1.5">
-            <span className="text-white text-[11px] md:text-base font-medium tracking-[0.2em] md:tracking-[0.25em] uppercase">{OWNER.name}</span>
-            <span className="text-neutral-400 text-[8px] md:text-xs font-light tracking-[0.15em] md:tracking-[0.2em] uppercase">2D Animation Artist</span>
+        <a href="/" aria-label="Home" className="group relative z-20 flex items-center gap-4 transition-all duration-300">
+          <img
+            src="/images/logo2.png"
+            alt={`${OWNER.name} logo`}
+            className="h-10 md:h-16 w-auto opacity-80 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:animate-pulse active:scale-95 cursor-pointer"
+          />
+          <div className="flex flex-col justify-center select-none leading-normal gap-1.5">
+            <span className="text-white text-[10px] md:text-base font-medium tracking-[0.2em] md:tracking-[0.25em] uppercase transition-colors duration-300 group-hover:text-neutral-300">
+              {OWNER.name}
+            </span>
+            <span className="text-neutral-400 text-[8px] md:text-xs font-light tracking-[0.15em] md:tracking-[0.2em] uppercase opacity-90">
+              2D Animation Artist
+            </span>
           </div>
         </a>
-        <ul className="flex gap-4 md:gap-14 text-neutral-300 list-none items-center">
-          {NAV_LINKS.map(({ href, label }) => <li key={href}><AnimatedHoverText href={href} text={label.toUpperCase()} className="text-[10px] md:text-sm font-medium tracking-[0.2em] md:tracking-[0.25em]" /></li>)}
+        <ul className="relative z-20 flex gap-4 md:gap-14 text-neutral-300 list-none items-center">
+          {NAV_LINKS.map(({ href, label }) => (
+            <li key={href}>
+              <AnimatedHoverText
+                href={href}
+                text={label.toUpperCase()}
+                className="text-[10px] md:text-sm font-medium tracking-[0.2em] md:tracking-[0.25em]"
+              />
+            </li>
+          ))}
         </ul>
       </div>
     </nav>
   );
 }
 
+function CompactFooter() {
+  return (
+    <footer className="relative z-10 px-6 md:px-10 mt-24 md:mt-40 pb-12">
+      <div className="max-w-5xl mx-auto w-full">
+        <div className="flex flex-col md:flex-row items-start md:items-end gap-8">
+          <address className="not-italic min-w-min text-neutral-400 text-sm md:text-base">
+            <a href={`mailto:${OWNER.email}`} className="hover:text-white transition-colors duration-300">{OWNER.email}</a>
+          </address>
+          <div className="hidden md:block flex-1 border-b border-neutral-700 mb-2" aria-hidden="true" />
+          <nav aria-label="Social media links">
+            <ul className="flex gap-6 md:gap-10 text-neutral-400 list-none items-center">
+              {SOCIAL_LINKS.map(({ href, label }) => (
+                <li key={href}>
+                  <AnimatedHoverText href={href} text={label.toUpperCase()} className="text-[10px] md:text-sm font-light tracking-[0.25em]" />
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 export default function Credits() {
   useEffect(() => {
     const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
-    function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
     requestAnimationFrame(raf);
     return () => lenis.destroy();
   }, []);
 
   return (
-    <main className="relative min-h-screen pt-28 md:pt-40 pb-16 bg-black">
+    <main className="relative min-h-screen pt-28 md:pt-40 pb-16 bg-black text-white font-sans">
       <div className="fixed inset-0 z-0">
         <img src="/images/bgaboutcontact.gif" alt="Background Animation" className="w-full h-full object-cover brightness-[0.4] contrast-[1.1]" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
@@ -84,9 +173,7 @@ export default function Credits() {
       <div className="relative z-10 max-w-5xl mx-auto px-5 md:px-12">
         <div className="mb-12 md:mb-20 flex flex-col items-center text-center">
           <a 
-            href="https://unscriptedream.com/reel" 
-            target="_blank" 
-            rel="noopener noreferrer"
+            href="/reel" 
             className="group relative px-6 py-2.5 md:px-8 md:py-3 bg-neutral-900 border border-neutral-700 hover:border-white transition-all duration-300 rounded-full"
           >
             <span className="text-xs md:text-sm font-medium tracking-[0.15em] md:tracking-[0.2em] uppercase text-white group-hover:tracking-[0.2em] md:group-hover:tracking-[0.25em] transition-all duration-300">
@@ -98,17 +185,17 @@ export default function Credits() {
         <div className="flex flex-col gap-8 md:gap-16">
           {CREDITS_LIST.map((credit, index) => {
             const isEven = index % 2 === 0;
-            const isProtected = (credit as any).isProtected;
+            const isProtected = credit.isProtected;
 
             return (
               <div key={index} className={`grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center group ${isProtected ? "opacity-80" : ""}`}>
                 <div className={`relative w-full ${isProtected ? "h-20 md:h-24" : "h-40 md:h-48"} bg-neutral-900/60 rounded-lg md:rounded-xl overflow-hidden border border-neutral-800/60 transition-all duration-300 ${isEven ? "md:order-1" : "md:order-2"}`}>
-                  {isProtected ? (
+                  {isProtected || !credit.image ? (
                     <div className="w-full h-full flex items-center justify-center bg-neutral-900/40">
                       <span className="text-neutral-500 text-[8px] md:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.3em] font-medium border border-neutral-800 px-2 py-0.5 md:px-3 md:py-1">NDA Protected</span>
                     </div>
                   ) : (
-                    <img src={(credit as any).image} alt={credit.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src={credit.image} alt={credit.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   )}
                 </div>
 
@@ -116,10 +203,10 @@ export default function Credits() {
                   <div className={`flex items-center gap-2 md:gap-3 text-[10px] md:text-xs text-neutral-500 mb-1 md:mb-2 ${!isEven && "md:flex-row-reverse"}`}>
                     <span className="font-semibold text-neutral-400">{credit.year}</span>
                     <span className="text-neutral-700">•</span>
-                    <span className="uppercase text-[9px] md:text-[11px]">{credit.format}</span>
+                    <span className="uppercase text-[9px] md:text-[11px] font-light tracking-wider">{credit.format}</span>
                   </div>
                   <h2 className="text-lg md:text-xl font-bold text-white leading-tight">
-                    {isProtected ? <span className="opacity-50 italic">Confidential Project</span> : credit.title}
+                    {isProtected ? <span className="opacity-50 font-medium italic">Confidential Project</span> : credit.title}
                   </h2>
                   <div className={`mt-1 md:mt-2 flex gap-2 md:gap-3 text-[11px] md:text-sm text-neutral-400 ${!isEven && "md:flex-row-reverse"}`}>
                     <span className="font-medium text-neutral-300">{credit.role}</span>
@@ -131,12 +218,9 @@ export default function Credits() {
             );
           })}
         </div>
-
-        <div className="mt-20 md:mt-32 pt-6 md:pt-8 border-t border-neutral-900 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] md:text-xs text-neutral-500 font-light tracking-wider text-center sm:text-left">
-          <span>© 2026 {OWNER.name}</span>
-          <p>Reel password upon request at: <a href={`mailto:${OWNER.email}`} className="text-neutral-400 hover:text-white underline">{OWNER.email}</a></p>
-        </div>
       </div>
+
+      <CompactFooter />
     </main>
   );
 }
