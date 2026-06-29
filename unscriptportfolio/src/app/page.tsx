@@ -83,7 +83,7 @@ function ScrollIndicator() {
 function HeroSection() {
   return (
     <section aria-label="Hero" className="relative h-screen flex items-center justify-center px-6 overflow-hidden">
-      <video autoPlay muted loop playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover blur-[2px]">
+      <video autoPlay muted loop playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover blur-[1px]">
         <source src="/videos/bg-loop.mp4" type="video/mp4" />
       </video>
       <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-b from-transparent to-black z-20 pointer-events-none" />
