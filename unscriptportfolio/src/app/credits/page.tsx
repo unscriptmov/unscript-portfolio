@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Lenis from "lenis";
 import Link from "next/link";
 
 const OWNER = {
-  name: "Nicolás Avilés A.",
+  name: "NICOLÁS AVILÉS A.",
   title: "2D Animator",
   email: "avilesarayan@gmail.com",
 } as const;
@@ -103,14 +103,30 @@ function CompactFooter() {
 }
 
 export default function Credits() {
+  const lenisRef = useRef<Lenis | null>(null);
+  const rafIdRef = useRef<number | null>(null);
+
   useEffect(() => {
-    const lenis = new Lenis({ duration: 1.2, smoothWheel: true });
+    lenisRef.current = new Lenis({
+      duration: 1.2,
+      smoothWheel: true,
+      syncTouch: true,
+    });
+
     function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+      lenisRef.current?.raf(time);
+      rafIdRef.current = requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
-    return () => lenis.destroy();
+
+    rafIdRef.current = requestAnimationFrame(raf);
+
+    return () => {
+      if (rafIdRef.current !== null) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
+      lenisRef.current?.destroy();
+      lenisRef.current = null;
+    };
   }, []);
 
   return (
@@ -126,7 +142,7 @@ export default function Credits() {
       `}} />
 
       <div className="fixed inset-0 z-0">
-        <img src="/images/bgaboutcontact.gif" alt="Background Animation" className="w-full h-full object-cover brightness-[0.4] contrast-[1.1]" />
+        <img src="/images/bgaboutcontact.gif" alt="Background Animation" className="w-full h-full object-cover brightness-[0.4] contrast-[1.1]" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
       </div>
 
@@ -162,7 +178,7 @@ export default function Credits() {
                       <span className="text-neutral-500 text-[8px] md:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.3em] font-medium border border-neutral-800 px-2 py-0.5 md:px-3 md:py-1">NDA Protected</span>
                     </div>
                   ) : (
-                    <img src={credit.image} alt={credit.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <img src={credit.image} alt={credit.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                   )}
                 </div>
 

@@ -2,16 +2,10 @@
 
 import { useState, useCallback } from "react";
 
-// ─── Constants ─────────────────────────────────────────────────────────────────
-
 const REEL_EMBED_URL =
   "https://res.cloudinary.com/dp2y2sz6l/video/upload/v1781279925/DemoReel_2026-Nicolas_Aviles-S1-web_rmdfbq.mp4";
 
-// ─── Types ──────────────────────────────────────────────────────────────────────
-
 type AuthStatus = "idle" | "loading" | "error";
-
-// ─── Sub-components ────────────────────────────────────────────────────────────
 
 function BackgroundLayers() {
   return (
@@ -40,12 +34,10 @@ function PasswordForm({ password, status, onChange, onSubmit }: PasswordFormProp
 
   return (
     <div className="relative z-10 w-full max-w-xl text-center flex flex-col items-center px-4">
-      {/* Título con mejor peso y tracking escalado */}
       <h1 className="text-sm md:text-lg font-semibold uppercase tracking-[0.4em] text-neutral-300 mb-12 select-none">
         NDA Demo Reel
       </h1>
 
-      {/* Contenedor del input con ancho óptimo para escritorio */}
       <div className="w-full max-w-[320px]">
         <input
           type="password"
@@ -66,7 +58,6 @@ function PasswordForm({ password, status, onChange, onSubmit }: PasswordFormProp
         </p>
       )}
 
-      {/* Sección inferior más visible y limpia */}
       <p className="mt-16 text-neutral-500 text-[11px] md:text-xs tracking-[0.25em] uppercase font-light leading-relaxed">
         Request password at:<br />
         <a 
@@ -110,8 +101,6 @@ function ReelPlayer() {
     </div>
   );
 }
-
-// ─── Page ──────────────────────────────────────────────────────────────────────
 
 export default function ReelPage() {
   const [password, setPassword] = useState("");

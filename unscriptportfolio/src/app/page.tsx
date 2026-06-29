@@ -26,12 +26,12 @@ const SOCIAL_LINKS = [
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-} as const;
+};
 
 const fadeUpOnView = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0, transition: { duration: 1 } },
-} as const;
+};
 
 function AnimatedHoverText({ text, className = "" }: { text: string; className?: string }) {
   return (
@@ -83,10 +83,9 @@ function ScrollIndicator() {
 function HeroSection() {
   return (
     <section aria-label="Hero" className="relative h-screen flex items-center justify-center px-6 overflow-hidden">
-      <video autoPlay muted loop playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover opacity-50">
+      <video autoPlay muted loop playsInline aria-hidden="true" className="absolute inset-0 w-full h-full object-cover blur-[2px]">
         <source src="/videos/bg-loop.mp4" type="video/mp4" />
       </video>
-      <div className="absolute inset-0 bg-black/10" aria-hidden="true" />
       <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-b from-transparent to-black z-20 pointer-events-none" />
       
       <motion.div variants={fadeUp} initial="hidden" animate="visible" className="relative z-30 text-center px-4">
@@ -208,7 +207,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-black text-white font-sans">
+    <main className="bg-black text-white font-sans backdrop-blur-[5px]">
       <HeroSection />
       <SharedBackground>
         <AboutSection />
