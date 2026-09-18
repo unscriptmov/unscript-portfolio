@@ -28,7 +28,7 @@ interface CreditItem {
 }
 
 const CREDITS_LIST: readonly CreditItem[] = [
-  { title: "Confidential Project", studio: "PÁJARO", format: "TV Series", role: "2D Animator", year: "2026", image: null, isProtected: true },
+  { title: "Confidential Project", studio: "Pájaro", format: "TV Series", role: "2D Animator", year: "2026", image: null, isProtected: true },
   { title: "Confidential Project", studio: "Bombillo Amarillo", format: "Feature Film", role: "2D Animator", year: "2026", image: null, isProtected: true },
   { title: "Confidential Project", studio: "Bombillo Amarillo", format: "TV Series", role: "2D Animator", year: "2026", image: null, isProtected: true },
   { title: "Confidential Project", studio: "Team Toon Studio", format: "Webseries", role: "2D Animator", year: "2025", image: null, isProtected: true },
